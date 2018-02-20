@@ -25,12 +25,20 @@ public class MoodGenerator {
         moods.add(cold);
 
         final Mood depressive = new Mood("Depressive");
-        depressive.setCharacteristics("feel", "dark", "alone");
+        depressive.setCharacteristics("dark", "alone", "helpless", "useless");
         moods.add(depressive);
 
         final Mood melancholic = new Mood("Melancholic");
         melancholic.setCharacteristics("long", "home");
         moods.add(melancholic);
+
+        final Mood romantic = new Mood("Romantic");
+        romantic.setCharacteristics("hugged", "kiss");
+        moods.add(romantic);
+
+        final Mood angry = new Mood("Angry");
+        angry.setCharacteristics("slammed", "fit", "rage");
+        moods.add(angry);
     }
 
     public Set<Mood> getMoods() {

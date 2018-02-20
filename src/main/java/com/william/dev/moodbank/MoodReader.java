@@ -20,18 +20,24 @@ public class MoodReader {
         int numberOfBestMatchingCharacteristics = 0;
         final Set<Mood> moods = moodGenerator.getMoods();
         for (final Mood currentMood : moods) {
-            int numberOfMatchingCharacteristics = 0;
             final String[] moodCharacteristics = currentMood.getCharacteristics();
-            for (final String moodCharacteristic : moodCharacteristics) {
-                if (inputText.toLowerCase().contains(moodCharacteristic)) {
-                    numberOfMatchingCharacteristics++;
-                }
-            }
-            if (numberOfMatchingCharacteristics > numberOfBestMatchingCharacteristics) {
+            final int numberOfMatchingWordsForCurrentMood = getNumberOfMatchingWordsForCurrentMood(inputText,
+                    moodCharacteristics);
+            if (numberOfMatchingWordsForCurrentMood > numberOfBestMatchingCharacteristics) {
                 bestMatchingMood = currentMood;
-                numberOfBestMatchingCharacteristics = numberOfMatchingCharacteristics;
+                numberOfBestMatchingCharacteristics = numberOfMatchingWordsForCurrentMood;
             }
         }
         return bestMatchingMood;
+    }
+
+    private int getNumberOfMatchingWordsForCurrentMood(final String inputText, final String[] moodCharacteristics) {
+        int numberOfMatchingWordsForCurrentMood = 0;
+        for (final String moodCharacteristic : moodCharacteristics) {
+            if (inputText.toLowerCase().contains(moodCharacteristic)) {
+                numberOfMatchingWordsForCurrentMood++;
+            }
+        }
+        return numberOfMatchingWordsForCurrentMood;
     }
 }
