@@ -1,47 +1,39 @@
 package com.william.dev.moodbank.moods;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Created by william on 17/02/18.
  */
 public class MoodGenerator {
-    private Set<Mood> moods;
-
-    public MoodGenerator() {
-        moods = new HashSet<>();
-
-        final Mood happy = new Mood("Happy");
-        happy.setCharacteristics("wonderful", "birthday", "peacefully");
-        moods.add(happy);
-
-        final Mood sad = new Mood("Serious");
-        sad.setCharacteristics("died", "hateful");
-        moods.add(sad);
-
-        final Mood cold = new Mood("Cold");
-        cold.setCharacteristics("cold", "winter");
-        moods.add(cold);
-
-        final Mood depressive = new Mood("Depressive");
-        depressive.setCharacteristics("dark", "alone", "helpless", "useless");
-        moods.add(depressive);
-
-        final Mood melancholic = new Mood("Melancholic");
-        melancholic.setCharacteristics("long", "home");
-        moods.add(melancholic);
-
-        final Mood romantic = new Mood("Romantic");
-        romantic.setCharacteristics("hugged", "kiss");
-        moods.add(romantic);
-
-        final Mood angry = new Mood("Angry");
-        angry.setCharacteristics("slammed", "fit", "rage");
-        moods.add(angry);
-    }
 
     public Set<Mood> getMoods() {
+        final Set<Mood> moods = new HashSet<>();
+        final String fileName = "./src/main/resources/moods.txt";
+
+        try (Stream<String> stream = Files.lines(Paths.get(fileName))) {
+            stream.forEach(fileEntry -> parseMood(fileEntry, moods));
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
         return moods;
+    }
+
+    private void parseMood(final String fileEntry, final Set<Mood> moods) {
+        final String[] entrySplit = fileEntry.split(":");
+        final String moodName = entrySplit[0];
+        final String characteristicsEntry = entrySplit[1];
+        final List<String> characteristics = Stream.of(characteristicsEntry.split(",")).collect(Collectors.toList());
+
+        final Mood mood = new Mood(moodName);
+        mood.setCharacteristics(characteristics);
+        moods.add(mood);
     }
 }

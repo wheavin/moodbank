@@ -3,6 +3,7 @@ package com.william.dev.moodbank;
 import com.william.dev.moodbank.moods.Mood;
 import com.william.dev.moodbank.moods.MoodGenerator;
 
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -20,7 +21,7 @@ public class MoodReader {
         int numberOfBestMatchingCharacteristics = 0;
         final Set<Mood> moods = moodGenerator.getMoods();
         for (final Mood currentMood : moods) {
-            final String[] moodCharacteristics = currentMood.getCharacteristics();
+            final List<String> moodCharacteristics = currentMood.getCharacteristics();
             final int numberOfMatchingWordsForCurrentMood = getNumberOfMatchingWordsForCurrentMood(inputText,
                     moodCharacteristics);
             if (numberOfMatchingWordsForCurrentMood > numberOfBestMatchingCharacteristics) {
@@ -31,7 +32,7 @@ public class MoodReader {
         return bestMatchingMood;
     }
 
-    private int getNumberOfMatchingWordsForCurrentMood(final String inputText, final String[] moodCharacteristics) {
+    private int getNumberOfMatchingWordsForCurrentMood(final String inputText, final List<String> moodCharacteristics) {
         int numberOfMatchingWordsForCurrentMood = 0;
         for (final String moodCharacteristic : moodCharacteristics) {
             if (inputText.toLowerCase().contains(moodCharacteristic)) {

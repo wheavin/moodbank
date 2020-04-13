@@ -8,21 +8,22 @@ import java.util.List;
  */
 public class Mood {
     private String name;
-    private String[] characteristics;
+    private List<String> characteristics;
     private List<Mood> relatedMoods;
+
+    public Mood() {
+        this.name = "";
+        this.characteristics = new ArrayList<>();
+        this.relatedMoods = new ArrayList<>();
+    }
 
     public Mood(final String name) {
         this.name = name;
+        this.characteristics = new ArrayList<>();
         this.relatedMoods = new ArrayList<>();
     }
 
-    public Mood(final String name, final String[] characteristics) {
-        this.name = name;
-        this.characteristics = characteristics;
-        this.relatedMoods = new ArrayList<>();
-    }
-
-    public Mood(final String name, final String[] characteristics, final List<Mood> relatedMoods) {
+    public Mood(final String name, final List<String> characteristics, final List<Mood> relatedMoods) {
         this.name = name;
         this.characteristics = characteristics;
         this.relatedMoods = relatedMoods;
@@ -36,11 +37,11 @@ public class Mood {
         this.name = name;
     }
 
-    public String[] getCharacteristics() {
+    public List<String> getCharacteristics() {
         return characteristics;
     }
 
-    public void setCharacteristics(final String... characteristics) {
+    public void setCharacteristics(final List<String> characteristics) {
         this.characteristics = characteristics;
     }
 
@@ -50,5 +51,14 @@ public class Mood {
 
     public void setRelatedMoods(List<Mood> relatedMoods) {
         this.relatedMoods = relatedMoods;
+    }
+
+    @Override
+    public String toString() {
+        return "Mood{" +
+                "name='" + name + '\'' +
+                ", characteristics=" + characteristics +
+                ", relatedMoods=" + relatedMoods +
+                '}';
     }
 }
