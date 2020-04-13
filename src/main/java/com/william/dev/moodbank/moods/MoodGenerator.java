@@ -27,7 +27,7 @@ public class MoodGenerator {
     }
 
     private void parseMood(final String fileEntry, final Set<Mood> moods) {
-        final String[] entrySplit = fileEntry.split(":");
+        final String[] entrySplit = fileEntry.split("::");
         final String moodName = entrySplit[0];
         final String characteristicsEntry = entrySplit[1];
         final List<String> characteristics = Stream.of(characteristicsEntry.split(",")).collect(Collectors.toList());

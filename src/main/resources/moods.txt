@@ -1,7 +1,7 @@
-Happy:wonderful,birthday,peacefully
-Serious:died,hateful
-Cold:cold,winter
-Depressive:dark,alone,helpless,useless
-Angry:rage,fit,slammed
-Romantic:hugged,kiss
-Melancholic:sunset,reflected,long,home
+Happy::wonderful,birthday,peacefully
+Serious::died,hateful
+Cold::cold,winter
+Depressive::dark,alone,helpless,useless,no,hope
+Angry::rage,fit,slammed,screamed,frustration,punched,kicked
+Romantic::hugged,kiss,love
+Melancholic::sunset,reflected,long,home
