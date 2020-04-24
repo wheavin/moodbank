@@ -32,7 +32,7 @@ public class MoodGenerator {
         final String characteristicsEntry = entrySplit[1];
         final List<String> characteristics = Stream.of(characteristicsEntry.split(",")).collect(Collectors.toList());
 
-        final Mood mood = new Mood(moodName);
+        final Mood mood = new Mood(moodName, characteristics);
         mood.setCharacteristics(characteristics);
         moods.add(mood);
     }
