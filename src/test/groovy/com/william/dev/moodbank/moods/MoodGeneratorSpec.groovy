@@ -13,7 +13,7 @@ class MoodGeneratorSpec extends Specification {
             def moods = objUnderTest.getMoods()
         then: "the mood data will be returned"
             !moods.isEmpty()
-        and: "the number of moods will be 4"
-            moods.size() == 7
+        and: "the number of moods will be 8"
+            moods.size() == 8
     }
 }

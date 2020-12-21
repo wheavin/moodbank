@@ -1,7 +1,8 @@
 Happy::wonderful,birthday,peacefully
 Serious::died,hateful
-Cold::cold,winter
-Depressive::dark,alone,helpless,useless,no,hope
+Cold::cold,winter,grey
+Depressive::dark,alone,helpless,useless,no,hope,bleak,grey
 Angry::rage,fit,slammed,screamed,frustration,punched,kicked
 Romantic::hugged,kiss,love
-Melancholic::sunset,reflected,long,home
+Melancholic::sunset,reflected,long,home,used
+Nostalgic::forget,used,times,back,miss
