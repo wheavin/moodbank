@@ -3,10 +3,10 @@ package com.william.dev.moodbank.moods;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
@@ -30,10 +30,7 @@ public class MoodGenerator {
         final String[] entrySplit = fileEntry.split("::");
         final String moodName = entrySplit[0];
         final String characteristicsEntry = entrySplit[1];
-        final List<String> characteristics = Stream.of(characteristicsEntry.split(",")).collect(Collectors.toList());
-
-        final Mood mood = new Mood(moodName, characteristics);
-        mood.setCharacteristics(characteristics);
-        moods.add(mood);
+        final List<String> characteristics = Arrays.asList(characteristicsEntry.split(","));
+        moods.add(new Mood(moodName, characteristics));
     }
 }
